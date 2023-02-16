@@ -1,0 +1,15 @@
+{
+    "language": "English",
+    "login": "Login",
+    "fogotPassText": "Forgot your password?",
+    "synText":"Synkrama Technologies HRM.",
+    "synTech": "Synkrama Technologies Pvt. Ltd.",
+    "allRightsText": "All rights reserved.",
+    "imgAlternative": "SYN_LOGO",
+    "textPlaceholderUsername": "Username",
+    "usernameVal": "Username is required",
+    "passwordVal": "Password is required",
+    "passLengthVal": "Must be at least 8 characters long",
+    "usernameminVal": "Username must be more than 3 characters long",
+    "usernamemaxVal": "Username not less than 15 characters long"
+}

@@ -40,12 +40,12 @@ export default function ForgotPassword() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      apiCallLogin(values);
+      apiCallSendOtp(values);
       resetForm();
     },
   });
 
-  const apiCallLogin = (info: any) => {
+  const apiCallSendOtp = (info: any) => {
     setErrMessage("");
     setProgress(true);
     AuthApi.apiCallLogin(info)
@@ -76,7 +76,7 @@ export default function ForgotPassword() {
       handleChange: formik.handleChange,
       touchedValue: formik.touched.email,
       errorsValue: formik.errors.email,
-    }
+    },
   ];
 
   return (
@@ -89,7 +89,9 @@ export default function ForgotPassword() {
           <Container
             className="text-center p-3 fs-2 fw-bolder"
             style={{ ...style.commonColor }}
-          ></Container>
+          >
+            {t.resetPassword}
+          </Container>
           <form style={{ ...style.formStyle }} onSubmit={formik.handleSubmit}>
             {textFieldValue.map((item: any, index) => (
               <CommonTextInput textFieldValue={item} key={index} />
@@ -115,6 +117,16 @@ export default function ForgotPassword() {
               </button>
             )}
           </form>
+          <Container className="text-center mt-5">
+            <Container style={{ ...style.textColorCommon }}>
+              {t.synText}
+            </Container>
+            <Container style={{ ...style.textColorCommon }}>
+              {`Copyright © ${copy}`}{" "}
+              <span style={{ ...style.synTech }}>{t.synTech}</span>{" "}
+              {t.allRightsText}
+            </Container>
+          </Container>
         </div>
         <div style={{ ...style.logoForm, position: "absolute" }}>
           <img src={ImagePath.LogoSVG} />

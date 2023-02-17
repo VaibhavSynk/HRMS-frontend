@@ -1,19 +1,19 @@
 import React, { useEffect } from "react";
+import Spinners from "../../../components/common/spinner";
 import { Container } from "react-bootstrap";
-import { ImagePath } from "../../../assets/images";
+import { AuthApi } from "../../../api/auth";
 import { CommonColors, style } from "../../../theming/style/style";
+import { Link } from "react-router-dom";
 import { AppStringUtils } from "../../../utils";
 import * as yup from "yup";
 import { useFormik } from "formik";
-import CommonTextInput from "../../../components/common/text-input";
-import Spinners from "../../../components/common/spinner";
-import { Link } from "react-router-dom";
-import { AuthApi } from "../../../api/auth";
+import { ImagePath } from "../../../assets/images";
 import { useDispatch } from "react-redux";
 import { actionLogin } from "../../../store/reducer/login";
-import { RoutePath } from "../../../routes/route-path";
+import CommonTextInput from "../../../components/common/text-input";
 import { useNavigate } from "react-router";
 import AlertBox from "../../../components/common/alert-box";
+import { RoutePath } from "../../../routes/route-path";
 
 export default function Login() {
   const t = AppStringUtils();

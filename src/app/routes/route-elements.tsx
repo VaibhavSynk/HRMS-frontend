@@ -8,7 +8,7 @@ const SignUp = lazy(() => import("../container/auth/signup"));
 const Login = lazy(() => import("../container/auth/login"));
 const ForgotPassword = lazy(() => import("../container/auth/forgot-password"));
 const Profile = lazy(() => import("../container/profile/index"));
-
+const VerifyOtp = lazy(() => import("../container/auth/otpVerification/index"));
 
 export const RouteElementsList: CommonRouteProps[] = [
     {
@@ -40,5 +40,11 @@ export const RouteElementsList: CommonRouteProps[] = [
       element: <Profile />,
       index: true,
       isAuth: true
-    }
+    },
+    {
+      path: RoutePath.verifyOtp,
+      element: <VerifyOtp />,
+      index: true,
+      isAuth: true
+    },
   ]

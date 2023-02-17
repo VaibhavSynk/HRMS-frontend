@@ -1,18 +1,19 @@
+import Spinners from "../../../components/common/spinner";
 import React, { useEffect } from "react";
 import { Container, Form } from "react-bootstrap";
 import { useNavigate } from "react-router";
-import { ImagePath } from "../../../assets/images";
 import { style } from "../../../theming/style/style";
 import { AppStringUtils } from "../../../utils";
-import * as yup from "yup";
+import CommonTextInput from "../../../components/common/text-input";
 import { useDispatch } from "react-redux";
+import { actionLogin } from "../../../store/reducer/login";
 import { useFormik } from "formik";
 import { AuthApi } from "../../../api/auth";
-import { actionLogin } from "../../../store/reducer/login";
+import { ImagePath } from "../../../assets/images";
 import { RoutePath } from "../../../routes/route-path";
-import CommonTextInput from "../../../components/common/text-input";
 import AlertBox from "../../../components/common/alert-box";
-import Spinners from "../../../components/common/spinner";
+import * as yup from "yup";
+import { actionReset } from "../../../store/reducer/reset";
 
 export default function ForgotPassword() {
   const t = AppStringUtils();
@@ -20,12 +21,11 @@ export default function ForgotPassword() {
   const router = useNavigate();
 
   const validationSchema = yup.object({
-    username: yup
+    email: yup
       .string()
-      .min(3, t.usernameminVal)
-      .max(15, t.usernamemaxVal)
-      .required(t.usernameVal),
-    password: yup.string().min(8, t.passLengthVal).required(t.passwordVal),
+      .min(13, t.emailminVal)
+      .max(30, t.usernamemaxVal)
+      .required(t.emailVal),
   });
 
   let copy = new Date().getFullYear();
@@ -48,11 +48,11 @@ export default function ForgotPassword() {
   const apiCallSendOtp = (info: any) => {
     setErrMessage("");
     setProgress(true);
-    AuthApi.apiCallLogin(info)
+    AuthApi.apiCallSendOtp(info)
       .then((res: any) => {
         setProgress(false);
-        dispatch(actionLogin(res.data));
-        router(RoutePath.dashboard, { replace: true });
+        dispatch(actionReset(res.data));
+        router(RoutePath.verifyOtp, { replace: true });
       })
       .catch((err: any) => {
         setProgress(false);
@@ -92,6 +92,7 @@ export default function ForgotPassword() {
           >
             {t.resetPassword}
           </Container>
+
           <form style={{ ...style.formStyle }} onSubmit={formik.handleSubmit}>
             {textFieldValue.map((item: any, index) => (
               <CommonTextInput textFieldValue={item} key={index} />

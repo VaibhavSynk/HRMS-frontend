@@ -1,3 +1,4 @@
 export const KeyLocalStorage = {
-    loginInfo: 'loginInfo'
+    loginInfo: 'loginInfo',
+    resetInfo : 'resetInfo'
 };

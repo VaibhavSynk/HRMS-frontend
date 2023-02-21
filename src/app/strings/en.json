@@ -1,6 +1,7 @@
 {
     "language": "English",
     "login": "Login",
+    "resetPassword" : "Reset Password",
     "fogotPassText": "Forgot your password?",
     "synText":"Synkrama Technologies HRM.",
     "synTech": "Synkrama Technologies Pvt. Ltd.",

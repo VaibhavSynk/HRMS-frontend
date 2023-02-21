@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/37.a310d791.chunk.js","mappings":"gLAEe,SAASA,IACtB,OACE,yBAAK,UAET,C","sources":["app/container/auth/signup/index.tsx"],"sourcesContent":["import React from 'react'\n\nexport default function SignUp() {\n  return (\n    <div>SignUp</div>\n  )\n}\n"],"names":["SignUp"],"sourceRoot":""}

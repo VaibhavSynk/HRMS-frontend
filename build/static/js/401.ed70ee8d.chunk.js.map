@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/401.ed70ee8d.chunk.js","mappings":"iLAEe,SAASA,IACtB,OACE,yBAAK,WAET,C","sources":["app/container/profile/index.tsx"],"sourcesContent":["import React from 'react'\n\nexport default function Profile() {\n  return (\n    <div>Profile</div>\n  )\n}\n"],"names":["Profile"],"sourceRoot":""}

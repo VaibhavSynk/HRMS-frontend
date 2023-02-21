@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkbdp_reactjs=self.webpackChunkbdp_reactjs||[]).push([[401],{5401:function(e,n,r){r.r(n),r.d(n,{default:function(){return u}});r(2791);var t=r(184);function u(){return(0,t.jsx)("div",{children:"Profile"})}}}]);
+//# sourceMappingURL=401.ed70ee8d.chunk.js.map

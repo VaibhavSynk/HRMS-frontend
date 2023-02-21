@@ -20,8 +20,24 @@ const apiCallLogin = (reqBody: any) => {
     })
 }
 
+const apiCallSendOtp = (reqBody: any) => {
+    return new Promise((resolve,reject) => {
+         ServiceRequest.PostApiRequest(endPoint.auth.forgotPassword,reqBody,"")
+         .then((res: any) => {
+            if(!res.error){
+                resolve(res);
+            }else{
+                reject(res);
+            }
+         })
+         .catch((err:any) => {
+            reject(getErrorFromCatch(err))
+         })
+    })
+}
+
 const AuthApi =  {
-    apiCallLogin,
+    apiCallLogin,apiCallSendOtp,
 }
 
 

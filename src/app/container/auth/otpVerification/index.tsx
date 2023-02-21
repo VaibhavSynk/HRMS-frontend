@@ -31,11 +31,17 @@ export default function ForgotPassword() {
 
   const dispatch = useDispatch();
   const [errMessage, setErrMessage] = React.useState("");
+  const [showPassword, setPassword] = React.useState(false);
   const [progress, setProgress] = React.useState(false);
+
+  const handleShowPassword = () => {
+    setPassword(!showPassword);
+  };
 
   const formik = useFormik({
     initialValues: {
       email: "",
+      otp: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -47,7 +53,7 @@ export default function ForgotPassword() {
   const apiCallVerifyOtp = (info: any) => {
     setErrMessage("");
     setProgress(true);
-    AuthApi.apiCallSendOtp(info)
+    AuthApi.apiVerifyOtp(info)
       .then((res: any) => {
         setProgress(false);
         dispatch(actionReset(res.data));
@@ -62,7 +68,7 @@ export default function ForgotPassword() {
   useEffect(() => {
     setTimeout(() => {
       setErrMessage("");
-    }, 5000);
+    }, 2000);
   }, [errMessage]);
 
   const textFieldValue = [
@@ -75,6 +81,18 @@ export default function ForgotPassword() {
       handleChange: formik.handleChange,
       touchedValue: formik.touched.email,
       errorsValue: formik.errors.email,
+    },
+    {
+      controlId: "floatingInput2",
+      inputType: "password",
+      label: "OTP*",
+      name: "password",
+      value: formik.values.otp,
+      handleChange: formik.handleChange,
+      touchedValue: formik.touched.otp,
+      errorsValue: formik.errors.otp,
+      iconsValue: showPassword,
+      handleShowPassword: handleShowPassword,
     },
   ];
 
@@ -96,7 +114,7 @@ export default function ForgotPassword() {
             {textFieldValue.map((item: any, index) => (
               <CommonTextInput textFieldValue={item} key={index} />
             ))}
-
+            
             <Container>
               {errMessage.length > 0 && (
                 <AlertBox message={errMessage} variant="danger" />

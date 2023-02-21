@@ -16,6 +16,7 @@ if(getLocalStorageInfo && getLocalStorageInfo !== null  && getLocalStorageInfo.l
 }
 
 const initialState: ResetReducerProps = {
+    
      isLogin: Object.keys(resetInfo).length > 0 ? true : false,
      infoLogin: resetInfo
 }

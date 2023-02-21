@@ -6,6 +6,7 @@ import { style } from "../../../theming/style/style";
 import { AppStringUtils } from "../../../utils";
 import CommonTextInput from "../../../components/common/text-input";
 import { useDispatch } from "react-redux";
+import { actionLogin } from "../../../store/reducer/login";
 import { useFormik } from "formik";
 import { AuthApi } from "../../../api/auth";
 import { ImagePath } from "../../../assets/images";
@@ -39,19 +40,19 @@ export default function ForgotPassword() {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      apiCallVerifyOtp(values);
+      apiCallSendOtp(values);
       resetForm();
     },
   });
 
-  const apiCallVerifyOtp = (info: any) => {
+  const apiCallSendOtp = (info: any) => {
     setErrMessage("");
     setProgress(true);
     AuthApi.apiCallSendOtp(info)
       .then((res: any) => {
         setProgress(false);
         dispatch(actionReset(res.data));
-        router(RoutePath.resetPassword, { replace: true });
+        router(RoutePath.verifyOtp, { replace: true });
       })
       .catch((err: any) => {
         setProgress(false);
@@ -113,7 +114,7 @@ export default function ForgotPassword() {
                 className="form-control rounded-5 p-2"
                 style={{ ...style.loginButton }}
               >
-                Verify OTP
+                Confirm Password
               </button>
             )}
           </form>

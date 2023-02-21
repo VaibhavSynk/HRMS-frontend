@@ -109,7 +109,7 @@ export default function Login() {
             </div>
 
             <Container
-              className="text-center p-3 fs-2 fw-bolder"
+              className="text-center p-3 fs-1 fw-bolder"
               style={{ ...style.commonColor }}
             >
               {t.login}

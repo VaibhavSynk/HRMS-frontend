@@ -63,7 +63,7 @@ export default function ForgotPassword() {
   useEffect(() => {
     setTimeout(() => {
       setErrMessage("");
-    }, 3000);
+    }, 5000);
   }, [errMessage]);
 
   const textFieldValue = [

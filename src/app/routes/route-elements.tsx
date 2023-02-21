@@ -4,7 +4,6 @@ import { CommonRouteProps } from "./route-interface.props";
 import { RoutePath } from "./route-path";
 
 const Dashboard = lazy(() => import("../container/dashboard"));
-const SignUp = lazy(() => import("../container/auth/signup"));
 const Login = lazy(() => import("../container/auth/login"));
 const ForgotPassword = lazy(() => import("../container/auth/forgot-password"));
 const Profile = lazy(() => import("../container/profile/index"));
@@ -20,12 +19,6 @@ export const RouteElementsList: CommonRouteProps[] = [
     {
       path: RoutePath.login,
       element: <Login />,
-      index: false,
-      isAuth: false
-    },
-    {
-      path: RoutePath.signup,
-      element: <SignUp />,
       index: false,
       isAuth: false
     },

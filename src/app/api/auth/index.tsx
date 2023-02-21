@@ -36,9 +36,43 @@ const apiCallSendOtp = (reqBody: any) => {
     })
 }
 
-const AuthApi =  {
-    apiCallLogin,apiCallSendOtp,
-}
-
-
-export { AuthApi };
+const apiVerifyOtp = (reqBody: any) => {
+    return new Promise((resolve, reject) => {
+      ServiceRequest.PostApiRequest(endPoint.auth.verifyOtp, reqBody, "")
+        .then((res: any) => {
+          if (!res.error) {
+            resolve(res);
+          } else {
+            reject(res);
+          }
+        })
+        .catch((err: any) => {
+          reject(getErrorFromCatch(err));
+        });
+    });
+  };
+  
+  const apiSetPassword = (reqBody: any) => {
+    return new Promise((resolve, reject) => {
+      ServiceRequest.PostApiRequest(endPoint.auth.setPassword, reqBody, "")
+        .then((res: any) => {
+          if (!res.error) {
+            resolve(res);
+          } else {
+            reject(res);
+          }
+        })
+        .catch((err: any) => {
+          reject(getErrorFromCatch(err));
+        });
+    });
+  };
+  const AuthApi = {
+    apiCallLogin,
+    apiCallSendOtp,
+    apiVerifyOtp,
+    apiSetPassword,
+  };
+  
+  export { AuthApi };
+  
